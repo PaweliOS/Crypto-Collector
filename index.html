@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto-Collector</title>
     <script src="https://kit.fontawesome.com/0b971f3444.js" crossorigin="anonymous"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./scss/main.css">
 </head>
 <body>
@@ -17,16 +21,38 @@
         </div>
     </header>
     <main>
-        <section class="container crypto__box">
-            <div class="row row-one"></div>
-            <div class="row row-two"></div>
-            <div class="row row-three"></div>
-        </section>
+        <section class="crypto">
+            <div class="container crypto__box">
+                <p class="col-12 crypto__title text-center border-bottom">ceny krypto</p>
+                <div class="crypto__data">
+                    <div class="crypto__coins crypto__coins--btc">
+                        <p class="crypto__coins--text crypto__coins--title">btc :</p>
+                        <p class="crypto__coins--text crypto__coins--price crypto__coins--btc-price">0</p>
+                    </div>
+                </div>
 
+            </div>
+        </section>
+        <section class="buttons">
+            <div class="container">
+                <div class="buttons">
+                    <button class="buttons__btns buttons__btn-checkAll" type="button" >check</button></div>
+                </div>
+        </section>
     </main>
     <footer class="footer">
-        <p class="footer__text">&copy; paweł pabisiak</p>
+        <p class="footer__text col-12 ">&copy; paweł pabisiak | 2022</p>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+    crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script src="./js/script.js" ></script>
 </body>
 </html>
