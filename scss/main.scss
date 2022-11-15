@@ -33,8 +33,6 @@ body {
 .crypto {
         padding: 2rem 0;
     &__box {
-        // display: flex;
-        // flex-direction: column;
         color: white;
         font-size: 2rem;
     }
@@ -42,9 +40,9 @@ body {
     &__title {
         padding: 1rem 0;
 
-        // &::first-letter {
-        //     text-transform: uppercase;
-        // }
+        &::first-letter {
+            text-transform: uppercase;
+        }
     }
 
     &__data {
