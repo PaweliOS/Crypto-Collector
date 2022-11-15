@@ -45,6 +45,7 @@ body {
 }
 .crypto__data {
   display: flex;
+  margin-bottom: 2rem;
 }
 .crypto__coins {
   display: flex;
