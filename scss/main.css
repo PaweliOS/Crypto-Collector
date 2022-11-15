@@ -37,6 +37,9 @@ body {
   color: white;
   font-size: 2rem;
 }
+.crypto__title {
+  padding: 1rem;
+}
 .crypto__title::first-letter {
   text-transform: uppercase;
 }
@@ -49,12 +52,13 @@ body {
   border: 1px solid white;
   padding: 0.5rem;
   justify-content: start;
+  margin-right: 1rem;
 }
 .crypto__coins--text {
   margin-bottom: 0;
   margin-right: 1rem;
 }
-.crypto__coins--btc {
+.crypto__coins--title {
   text-transform: uppercase;
 }
 .crypto__Ex-logo {
