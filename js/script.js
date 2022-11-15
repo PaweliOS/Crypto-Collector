@@ -51,14 +51,16 @@ async function getPrice() {
     const respExbitronLtc = await axios.get(URL_EXBITRON_LTC)
     const respExbitronDoge = await axios.get(URL_EXBITRON_DOGE)
     
-    // console.log(respExbitronQoge.data.bids[0].price)
-    // console.log(respExbitronQoge.data.bids[0].price)
-    
-    ltcPrice.textContent = respExbitronLtc.data.bids[0].price + ' USD'
-    dogePrice.textContent = respExbitronDoge.data.bids[0].price + ' USD'
+    ltcPrice.textContent = roundX_Y(respExbitronLtc.data.bids[0].price, 3) + ' USD'
+    dogePrice.textContent = roundX_Y(respExbitronDoge.data.bids[0].price, 3) + ' USD'
     btcPrice.textContent = respBtc.data.bitcoin.usd + ' USD'
-    ethPrice.textContent = respEth.data.ethereum.usd + ' USD'
-    
+    ethPrice.textContent = respEth.data.ethereum.usd + ' USD'   
+}
+
+// roundX_Y zaokrąglij liczbę X do Y miejsc po przecinku
+const roundX_Y = (x,y) => {
+    let output = (Math.round(x * Math.pow(10, y)))/Math.pow(10, y)
+    return output
 }
 
 // for (n = 0; n = 3600; n++){
