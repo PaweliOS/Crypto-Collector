@@ -6,7 +6,8 @@ const dogePrice = document.querySelector('.crypto__coins--doge-price')
 const etcPrice = document.querySelector('.crypto__coins--etc-price')
 const xrpPrice = document.querySelector('.crypto__coins--xrp-price')
 
-// const URL = 'https://api.coingecko.com/api/v3/exchange_rates'
+const warning = document.querySelector('.warning')
+const warningButton = document.querySelector('.warning__button')
 
 // === poniżej tylko dla wybranej crypto sama cena ====
 const BTC = 'bitcoin'
@@ -25,49 +26,53 @@ const URL_EXBITRON_DOGE = 'https://www.exbitron.com/api/v2/peatio/public/markets
 const URL_BINANCE_ETC_USDT =  'https://api.binance.com/api/v3/ticker/price?symbol=' + Binance_etcusdt
 const URL_BINANCE_XRP_USDT =  'https://api.binance.com/api/v3/ticker/price?symbol=' + Binance_xrpusdt
 
-// === poniżej dla jednego coina (ethereum) pełna informacja =====
-// const URL = 'https://api.coingecko.com/api/v3/coins/ethereum'
-
-
-
-// =============== obsługa =================
-// const getPrice = () => {
-//     fetch(URL)
-//     .then(res => res.json())
-//         .then(data => console.log(data))
-//         .catch(err => console.log(err))
-// }
-
-//  ============ klasycznie =================
-// const getPrice = () => {
-//     axios.get(URL).then(res => console.log(res.data.rates.usd.value))
-//     axios.get(URL).then(res => (btcPrice.textContent = res.data.rates.usd.value + ' USD'))
-// }
-
-//========== funkcja asynchroniczna ==============
-// dla  const URL = 'https://api.coingecko.com/api/v3/exchange_rates'
-// async function getPrice() {
-//     const resp = await axios.get(URL)
-//     btcPrice.textContent = resp.data.rates.usd.value + ' USD'
-// }
-
 
 async function getPrice() {
-    const respBtc = await axios.get(URL_BTC_USD)
-    const respEth = await axios.get(URL_ETH_USD)
-    const respExbitronLtc = await axios.get(URL_EXBITRON_LTC)
-    const respExbitronDoge = await axios.get(URL_EXBITRON_DOGE)
-    const respBinanceEtc = await axios.get(URL_BINANCE_ETC_USDT)
-    const respBinanceXrp = await axios.get(URL_BINANCE_XRP_USDT)
+    setTimeout(activateCheckAllBtn, 10000)
+    checkAllBtn.setAttribute('class', 'btn btn-primary buttons__btns buttons__btn-checkAll fs-3 disabled')
+
+    // const respBtc = await axios.get(URL_BTC_USD)
+    await axios.get(URL_BTC_USD)
+    .then((resp) => {
+        btcPrice.textContent = resp.data.bitcoin.usd + ' USD'
+    })
+    .catch(() => { warning.classList.remove('d-none') })
     
-    ltcPrice.textContent = roundX_Y(respExbitronLtc.data.bids[0].price, 3) + ' USD'
-    dogePrice.textContent = roundX_Y(respExbitronDoge.data.bids[0].price, 3) + ' USD'
-    btcPrice.textContent = respBtc.data.bitcoin.usd + ' USD'
-    ethPrice.textContent = respEth.data.ethereum.usd + ' USD'   
-    etcPrice.textContent = roundX_Y(respBinanceEtc.data.price, 3) + ' USD'   
-    xrpPrice.textContent = roundX_Y(respBinanceXrp.data.price, 3) + ' USD'   
-    // console.log(respBinanceEtc.data.price)
+    await axios.get(URL_ETH_USD)
+    .then((resp) => {
+        ethPrice.textContent = resp.data.ethereum.usd + ' USD'
+    })
+        .catch(() => { warning.classList.remove('d-none') })
     
+    await axios.get(URL_EXBITRON_LTC)
+    .then((resp) => {
+        ltcPrice.textContent = roundX_Y(resp.data.bids[0].price, 3) + ' USD'
+    })
+    .catch(() => { warning.classList.remove('d-none') })
+
+    await axios.get(URL_EXBITRON_DOGE)
+    .then((resp) => {
+        dogePrice.textContent = roundX_Y(resp.data.bids[0].price, 3) + ' USD'
+    })
+    .catch(() => { warning.classList.remove('d-none') })
+
+    await axios.get(URL_BINANCE_ETC_USDT)
+    .then((resp) => {
+        etcPrice.textContent = roundX_Y(resp.data.price, 3) + ' USD'
+    })
+    .catch(() => { warning.classList.remove('d-none') })
+
+    await axios.get(URL_BINANCE_XRP_USDT)
+    .then((resp) => {
+        xrpPrice.textContent = roundX_Y(resp.data.price, 3) + ' USD'
+    })
+    .catch(() => { warning.classList.remove('d-none') })
+
+    // console.log(respBinanceXrp.data.price)
+}
+
+function activateCheckAllBtn() {
+    checkAllBtn.classList.remove('disabled')
 }
 
 // roundX_Y zaokrąglij liczbę X do Y miejsc po przecinku
@@ -76,9 +81,10 @@ const roundX_Y = (x,y) => {
     return output
 }
 
-// for (n = 0; n = 3600; n++){
-//     sleep(1000).console.log('ciach')
-    
-// }
+const hideWarning = () => {
+    warning.classList.add('d-none')
+}
+
 
 checkAllBtn.addEventListener('click', getPrice)
+warningButton.addEventListener('click', hideWarning)

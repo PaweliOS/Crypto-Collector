@@ -66,40 +66,34 @@ body {
             text-transform: uppercase;
             margin-right: 1rem;
         }
-
     }
 
     &__Ex-logo {
         width: 30px;
         margin-right: 1rem;
-        
-        // height: 20px;
     }
-    // &__grid {
-    //     display: grid;
-    //     grid-template-columns: repeat(4,100px);
-    //     grid-template-rows: repeat(2,40px);
-    //     grid-gap: 20px, 10px;
-    //     background-color: rgba(255, 255, 255, .3)
-    // }
-
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    // padding: 2rem 4rem;
+    height: 100%;
     &__btns {
-        padding: 0.5rem 2rem;
-        color: white;
-        background-color: transparent;
-        border-color: white;
-        border-radius: 8px;
-        font-size: 2rem;
+        width: 100px;
+        height: 40px;
     }
+}
 
-    &__btn-checkAll {
-        // align-self: center;
+.warning {
+    // top: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: -8rem;
+    &__button {
+        align-self: center;
+        width: 60px;
+        font-size: 1.5rem;
+        padding: 0 1rem;
     }
 }
 
