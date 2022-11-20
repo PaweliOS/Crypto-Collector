@@ -101,9 +101,9 @@ body {
     text-align: center;
     color: white;
     &__text {
-        position: absolute;
-        bottom: 0;
-        font-size: 2rem;
+        position: relative;
+        margin-top: 3rem;
+        font-size: 1rem;
         text-transform: capitalize;
     }
 }
